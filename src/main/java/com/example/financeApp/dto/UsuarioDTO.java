@@ -6,6 +6,7 @@ public class UsuarioDTO {
     private String nome;
     private String login;
     private String senha;
+    private String token;
 
     public UsuarioDTO() {
 
@@ -15,6 +16,7 @@ public class UsuarioDTO {
         setLogin(usuario.getLogin());
         setNome(usuario.getNome());
         setSenha(usuario.getSenha());
+        setToken(usuario.getToken());
     }
 
     public String getNome() {
@@ -39,5 +41,13 @@ public class UsuarioDTO {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

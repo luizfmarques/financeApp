@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 @Controller
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -45,10 +48,19 @@ public class UsuarioController {
             throw new IllegalArgumentException("Senha inválida!");
         }
 
-        return ResponseEntity.ok("Login ok");
+        UsuarioDTO tokenDto = new UsuarioDTO(usuario);
+        tokenDto.setToken(gerarTokenAleatorio());
+        usuario.setToken(tokenDto.getToken());
+        usuario.setUltimaAlteracao(LocalDateTime.now());
+        usuarioService.salvarUsuario(usuario);
 
-       // String token = criarTokenAleatorio();
+        return ResponseEntity.ok(tokenDto);
 
+    }
+
+    private String gerarTokenAleatorio(){
+        String token = UUID.randomUUID().toString();
+        return token.substring(0, 10);
     }
 
     private Usuario toEntity(UsuarioDTO dto) {
