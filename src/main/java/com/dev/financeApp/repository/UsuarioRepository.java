@@ -1,6 +1,6 @@
-package com.example.financeApp.repository;
+package com.dev.financeApp.repository;
 
-import com.example.financeApp.entity.Usuario;
+import com.dev.financeApp.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     Usuario findByLogin(String login);
+
+    Boolean existsByToken(String token);
 
 }

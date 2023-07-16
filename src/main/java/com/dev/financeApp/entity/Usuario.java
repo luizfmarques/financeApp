@@ -1,4 +1,4 @@
-package com.example.financeApp.entity;
+package com.dev.financeApp.entity;
 
 import jakarta.persistence.*;
 
@@ -18,7 +18,7 @@ public class Usuario {
     private String login;
     @Column(nullable = false, length = 255)
     private String senha;
-    @Column(length = 10)
+    @Column(unique = true, length = 10)
     private String token;
     @Column(nullable = false)
     private LocalDate dataCadastro = LocalDate.now();

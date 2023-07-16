@@ -1,6 +1,6 @@
-package com.example.financeApp.dto;
+package com.dev.financeApp.dto;
 
-import com.example.financeApp.entity.Usuario;
+import com.dev.financeApp.entity.Usuario;
 
 public class UsuarioDTO {
     private String nome;

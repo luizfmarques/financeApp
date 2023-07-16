@@ -1,8 +1,8 @@
-package com.example.financeApp.controller;
+package com.dev.financeApp.controller;
 
-import com.example.financeApp.dto.UsuarioDTO;
-import com.example.financeApp.entity.Usuario;
-import com.example.financeApp.service.UsuarioService;
+import com.dev.financeApp.dto.UsuarioDTO;
+import com.dev.financeApp.entity.Usuario;
+import com.dev.financeApp.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -47,20 +47,11 @@ public class UsuarioController {
         if (!usuario.getSenha().equals(senhaCriptografada)) {
             throw new IllegalArgumentException("Senha inválida!");
         }
-
+        usuarioService.gerarToken(usuario);
         UsuarioDTO tokenDto = new UsuarioDTO(usuario);
-        tokenDto.setToken(gerarTokenAleatorio());
-        usuario.setToken(tokenDto.getToken());
-        usuario.setUltimaAlteracao(LocalDateTime.now());
-        usuarioService.salvarUsuario(usuario);
+        tokenDto.setToken(usuario.getToken());
 
         return ResponseEntity.ok(tokenDto);
-
-    }
-
-    private String gerarTokenAleatorio(){
-        String token = UUID.randomUUID().toString();
-        return token.substring(0, 10);
     }
 
     private Usuario toEntity(UsuarioDTO dto) {
