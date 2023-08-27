@@ -1,7 +1,9 @@
 package com.dev.financeApp.service;
 
+import com.dev.financeApp.dto.UsuarioDTO;
 import com.dev.financeApp.entity.Usuario;
 import com.dev.financeApp.repository.UsuarioRepository;
+import com.dev.financeApp.util.CriptografiaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +44,14 @@ public class UsuarioService {
     private String gerarTokenAleatorio() {
         String token = UUID.randomUUID().toString();
         return token.substring(0, 10);
+    }
+
+    public Usuario toEntity(UsuarioDTO dto) {
+        Usuario usuario = new Usuario();
+        usuario.setLogin(dto.getLogin());
+        usuario.setNome(dto.getNome());
+        String senhaCriptografada = CriptografiaUtil.criptografarSenha(dto.getSenha());
+        usuario.setSenha(senhaCriptografada);
+        return usuario;
     }
 }
