@@ -5,13 +5,13 @@ import com.dev.financeApp.service.UsuarioService;
 
 public class UsuarioValidation {
 
+    private UsuarioService usuarioService;
+
     public UsuarioValidation(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
 
-    private UsuarioService usuarioService;
-
-    public void verificarLogar(UsuarioDTO dto) {
+    public void validarLogar(UsuarioDTO dto) {
 
         String login = dto.getLogin();
         String senha = dto.getSenha();

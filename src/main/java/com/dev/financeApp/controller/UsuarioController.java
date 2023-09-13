@@ -31,9 +31,9 @@ public class UsuarioController {
     @PostMapping("/logar")
     public ResponseEntity logar(@RequestBody UsuarioDTO dto) {
         UsuarioValidation usuarioValidation = new UsuarioValidation(this.usuarioService);
-        usuarioValidation.verificarLogar(dto);
+        usuarioValidation.validarLogar(dto);
         Usuario usuario = usuarioService.buscarUsuarioPorLogin(dto.getLogin());
-        String senhaCriptografada = CriptografiaUtil.criptografarSenha(dto.getSenha());
+        String senhaCriptografada = CriptografiaUtil.criptografar(dto.getSenha());
         if (!usuario.getSenha().equals(senhaCriptografada)) {
             throw new IllegalArgumentException("Senha inválida!");
         }

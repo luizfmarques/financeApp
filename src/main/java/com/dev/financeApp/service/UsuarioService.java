@@ -50,7 +50,7 @@ public class UsuarioService {
         Usuario usuario = new Usuario();
         usuario.setLogin(dto.getLogin());
         usuario.setNome(dto.getNome());
-        String senhaCriptografada = CriptografiaUtil.criptografarSenha(dto.getSenha());
+        String senhaCriptografada = CriptografiaUtil.criptografar(dto.getSenha());
         usuario.setSenha(senhaCriptografada);
         return usuario;
     }

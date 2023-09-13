@@ -2,7 +2,7 @@ package com.dev.financeApp.util;
 
 public class CriptografiaUtil {
 
-    public static String criptografarSenha(String senha) {
+    public static String criptografar(String senha) {
         int deslocamento = 3;
         StringBuilder senhaCriptografada = new StringBuilder();
         for (int i = 0; i < senha.length(); i++) {
@@ -17,7 +17,7 @@ public class CriptografiaUtil {
         return senhaCriptografada.toString();
     }
 
-    public static String descriptografarSenha(String senhaCriptografada) {
+    public static String descriptografar(String senhaCriptografada) {
         int deslocamento = 3;
         StringBuilder senhaDescriptografada = new StringBuilder();
         for (int i = 0; i < senhaCriptografada.length(); i++) {
