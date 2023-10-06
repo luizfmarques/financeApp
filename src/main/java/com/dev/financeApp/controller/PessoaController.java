@@ -18,9 +18,9 @@ public class PessoaController {
     private PessoaService pessoaService;
 
     @PostMapping("criar_pessoa")
-    public ResponseEntity<PessoaDTO> criarPessoa(@RequestBody PessoaDTO dto){
+    public ResponseEntity<PessoaDTO> criarPessoa(@RequestBody PessoaDTO dto) {
         Pessoa pessoa = pessoaService.toEntity(dto);
-        pessoa = pessoaService.salvarPessoa((pessoa));
+        pessoa = pessoaService.salvarPessoa(pessoa);
         return ResponseEntity.ok(new PessoaDTO(pessoa));
     }
 }

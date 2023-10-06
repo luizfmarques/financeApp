@@ -14,20 +14,20 @@ public class PessoaService {
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    public Pessoa salvarPessoa(Pessoa pessoa){
+    public Pessoa salvarPessoa(Pessoa pessoa) {
         pessoa.setUltimaAlteracao(LocalDateTime.now());
         return pessoaRepository.save(pessoa);
     }
 
-    public boolean nomeExistente(String nome){
+    public boolean nomeExistente(String nome) {
         return pessoaRepository.findByName(nome) != null;
     }
 
-    public Pessoa buscarPessoaPorNome(String nome){
+    public Pessoa buscarPessoaPorNome(String nome) {
         return pessoaRepository.findByName(nome);
     }
 
-    public Pessoa toEntity(PessoaDTO dto){
+    public Pessoa toEntity(PessoaDTO dto) {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome(dto.getNome());
         pessoa.setStatus(dto.isStatus());

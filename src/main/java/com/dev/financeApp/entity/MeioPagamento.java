@@ -7,15 +7,15 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "TB_PESSOAS")
+@Table(name = "TB_MEIO_PAGAMENTO")
 @Data
-public class Pessoa {
+public class MeioPagamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, unique = true, length = 255)
+    @Column(nullable = false, length = 255)
     private String nome;
 
     @Column(nullable = false)
@@ -29,7 +29,7 @@ public class Pessoa {
 
     private Usuario usuario;
 
-    public Pessoa() {
+    public MeioPagamento() {
 
     }
 

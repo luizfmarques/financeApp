@@ -10,11 +10,11 @@ public class PessoaDTO {
     private boolean status;
     private Usuario usuario;
 
-    public PessoaDTO(){
+    public PessoaDTO() {
 
     }
 
-    public PessoaDTO(Pessoa pessoa){
+    public PessoaDTO(Pessoa pessoa) {
         setNome(pessoa.getNome());
         setStatus(pessoa.isStatus());
         setUsuario(pessoa.getUsuario());
